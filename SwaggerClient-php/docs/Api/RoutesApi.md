@@ -8,7 +8,8 @@ Method | HTTP request | Description
 [**appsAppRoutesPost**](RoutesApi.md#appsAppRoutesPost) | **POST** /apps/{app}/routes | Create new Route
 [**appsAppRoutesRouteDelete**](RoutesApi.md#appsAppRoutesRouteDelete) | **DELETE** /apps/{app}/routes/{route} | Deletes the route
 [**appsAppRoutesRouteGet**](RoutesApi.md#appsAppRoutesRouteGet) | **GET** /apps/{app}/routes/{route} | Gets route by name
-[**appsAppRoutesRoutePatch**](RoutesApi.md#appsAppRoutesRoutePatch) | **PATCH** /apps/{app}/routes/{route} | Update a Route
+[**appsAppRoutesRoutePatch**](RoutesApi.md#appsAppRoutesRoutePatch) | **PATCH** /apps/{app}/routes/{route} | Update a Route, Fails if the route or app does not exist. Accepts partial updates / skips validation of zero values.
+[**appsAppRoutesRoutePut**](RoutesApi.md#appsAppRoutesRoutePut) | **PUT** /apps/{app}/routes/{route} | Create a Route if it does not exist. Update if it does. Will also create app if it does not exist. Put does not skip validation of zero values
 
 
 # **appsAppRoutesGet**
@@ -61,7 +62,7 @@ No authorization required
 
 Create new Route
 
-Create a new route in an app, if app doesn't exists, it creates the app
+Create a new route in an app, if app doesn't exists, it creates the app. Post does not skip validation of zero values.
 
 ### Example
 ```php
@@ -199,7 +200,7 @@ No authorization required
 # **appsAppRoutesRoutePatch**
 > \Swagger\Client\Model\RouteWrapper appsAppRoutesRoutePatch($app, $route, $body)
 
-Update a Route
+Update a Route, Fails if the route or app does not exist. Accepts partial updates / skips validation of zero values.
 
 Update a route
 
@@ -218,6 +219,55 @@ try {
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling RoutesApi->appsAppRoutesRoutePatch: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **app** | **string**| name of the app. |
+ **route** | **string**| route path. |
+ **body** | [**\Swagger\Client\Model\RouteWrapper**](../Model/RouteWrapper.md)| One route to post. |
+
+### Return type
+
+[**\Swagger\Client\Model\RouteWrapper**](../Model/RouteWrapper.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **appsAppRoutesRoutePut**
+> \Swagger\Client\Model\RouteWrapper appsAppRoutesRoutePut($app, $route, $body)
+
+Create a Route if it does not exist. Update if it does. Will also create app if it does not exist. Put does not skip validation of zero values
+
+Update or Create a route
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$api_instance = new Swagger\Client\Api\RoutesApi();
+$app = "app_example"; // string | name of the app.
+$route = "route_example"; // string | route path.
+$body = new \Swagger\Client\Model\RouteWrapper(); // \Swagger\Client\Model\RouteWrapper | One route to post.
+
+try {
+    $result = $api_instance->appsAppRoutesRoutePut($app, $route, $body);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling RoutesApi->appsAppRoutesRoutePut: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```

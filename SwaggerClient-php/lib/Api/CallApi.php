@@ -1,6 +1,6 @@
 <?php
 /**
- * AppsApi
+ * CallApi
  * PHP version 5
  *
  * @category Class
@@ -34,14 +34,14 @@ use \Swagger\Client\Configuration;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * AppsApi Class Doc Comment
+ * CallApi Class Doc Comment
  *
  * @category Class
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class AppsApi
+class CallApi
 {
     /**
      * API Client
@@ -79,7 +79,7 @@ class AppsApi
      *
      * @param \Swagger\Client\ApiClient $apiClient set the API client
      *
-     * @return AppsApi
+     * @return CallApi
      */
     public function setApiClient(\Swagger\Client\ApiClient $apiClient)
     {
@@ -88,37 +88,43 @@ class AppsApi
     }
 
     /**
-     * Operation appsAppDelete
+     * Operation appsAppCallsCallGet
      *
-     * Delete an app.
+     * Get call information
      *
-     * @param string $app Name of the app. (required)
+     * @param string $app app name (required)
+     * @param string $call Call ID. (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return void
+     * @return \Swagger\Client\Model\CallWrapper
      */
-    public function appsAppDelete($app)
+    public function appsAppCallsCallGet($app, $call)
     {
-        list($response) = $this->appsAppDeleteWithHttpInfo($app);
+        list($response) = $this->appsAppCallsCallGetWithHttpInfo($app, $call);
         return $response;
     }
 
     /**
-     * Operation appsAppDeleteWithHttpInfo
+     * Operation appsAppCallsCallGetWithHttpInfo
      *
-     * Delete an app.
+     * Get call information
      *
-     * @param string $app Name of the app. (required)
+     * @param string $app app name (required)
+     * @param string $call Call ID. (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\CallWrapper, HTTP status code, HTTP response headers (array of strings)
      */
-    public function appsAppDeleteWithHttpInfo($app)
+    public function appsAppCallsCallGetWithHttpInfo($app, $call)
     {
         // verify the required parameter 'app' is set
         if ($app === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $app when calling appsAppDelete');
+            throw new \InvalidArgumentException('Missing the required parameter $app when calling appsAppCallsCallGet');
+        }
+        // verify the required parameter 'call' is set
+        if ($call === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $call when calling appsAppCallsCallGet');
         }
         // parse inputs
-        $resourcePath = "/apps/{app}";
+        $resourcePath = "/apps/{app}/calls/{call}";
         $httpBody = '';
         $queryParams = [];
         $headerParams = [];
@@ -129,6 +135,114 @@ class AppsApi
         }
         $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
+        // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                "{" . "app" . "}",
+                $this->apiClient->getSerializer()->toPathValue($app),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($call !== null) {
+            $resourcePath = str_replace(
+                "{" . "call" . "}",
+                $this->apiClient->getSerializer()->toPathValue($call),
+                $resourcePath
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
+        } elseif (count($formParams) > 0) {
+            $httpBody = $formParams; // for HTTP post (form)
+        }
+        // make the API Call
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath,
+                'GET',
+                $queryParams,
+                $httpBody,
+                $headerParams,
+                '\Swagger\Client\Model\CallWrapper',
+                '/apps/{app}/calls/{call}'
+            );
+
+            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\CallWrapper', $httpHeader), $statusCode, $httpHeader];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\CallWrapper', $e->getResponseHeaders());
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Error', $e->getResponseHeaders());
+                    $e->setResponseObject($data);
+                    break;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation appsAppCallsCallLogDelete
+     *
+     * Delete call log entry
+     *
+     * @param string $call Call ID. (required)
+     * @param string $app App name. (required)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return void
+     */
+    public function appsAppCallsCallLogDelete($call, $app)
+    {
+        list($response) = $this->appsAppCallsCallLogDeleteWithHttpInfo($call, $app);
+        return $response;
+    }
+
+    /**
+     * Operation appsAppCallsCallLogDeleteWithHttpInfo
+     *
+     * Delete call log entry
+     *
+     * @param string $call Call ID. (required)
+     * @param string $app App name. (required)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function appsAppCallsCallLogDeleteWithHttpInfo($call, $app)
+    {
+        // verify the required parameter 'call' is set
+        if ($call === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $call when calling appsAppCallsCallLogDelete');
+        }
+        // verify the required parameter 'app' is set
+        if ($app === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $app when calling appsAppCallsCallLogDelete');
+        }
+        // parse inputs
+        $resourcePath = "/apps/{app}/calls/{call}/log";
+        $httpBody = '';
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
+        if (!is_null($_header_accept)) {
+            $headerParams['Accept'] = $_header_accept;
+        }
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
+
+        // path params
+        if ($call !== null) {
+            $resourcePath = str_replace(
+                "{" . "call" . "}",
+                $this->apiClient->getSerializer()->toPathValue($call),
+                $resourcePath
+            );
+        }
         // path params
         if ($app !== null) {
             $resourcePath = str_replace(
@@ -153,7 +267,7 @@ class AppsApi
                 $httpBody,
                 $headerParams,
                 null,
-                '/apps/{app}'
+                '/apps/{app}/calls/{call}/log'
             );
 
             return [null, $statusCode, $httpHeader];
@@ -174,37 +288,43 @@ class AppsApi
     }
 
     /**
-     * Operation appsAppGet
+     * Operation appsAppCallsCallLogGet
      *
-     * Get information for a app.
+     * Get call logs
      *
-     * @param string $app name of the app. (required)
+     * @param string $app App Name (required)
+     * @param string $call Call ID. (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return \Swagger\Client\Model\AppWrapper
+     * @return \Swagger\Client\Model\LogWrapper
      */
-    public function appsAppGet($app)
+    public function appsAppCallsCallLogGet($app, $call)
     {
-        list($response) = $this->appsAppGetWithHttpInfo($app);
+        list($response) = $this->appsAppCallsCallLogGetWithHttpInfo($app, $call);
         return $response;
     }
 
     /**
-     * Operation appsAppGetWithHttpInfo
+     * Operation appsAppCallsCallLogGetWithHttpInfo
      *
-     * Get information for a app.
+     * Get call logs
      *
-     * @param string $app name of the app. (required)
+     * @param string $app App Name (required)
+     * @param string $call Call ID. (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return array of \Swagger\Client\Model\AppWrapper, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\LogWrapper, HTTP status code, HTTP response headers (array of strings)
      */
-    public function appsAppGetWithHttpInfo($app)
+    public function appsAppCallsCallLogGetWithHttpInfo($app, $call)
     {
         // verify the required parameter 'app' is set
         if ($app === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $app when calling appsAppGet');
+            throw new \InvalidArgumentException('Missing the required parameter $app when calling appsAppCallsCallLogGet');
+        }
+        // verify the required parameter 'call' is set
+        if ($call === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $call when calling appsAppCallsCallLogGet');
         }
         // parse inputs
-        $resourcePath = "/apps/{app}";
+        $resourcePath = "/apps/{app}/calls/{call}/log";
         $httpBody = '';
         $queryParams = [];
         $headerParams = [];
@@ -215,6 +335,106 @@ class AppsApi
         }
         $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
+        // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                "{" . "app" . "}",
+                $this->apiClient->getSerializer()->toPathValue($app),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($call !== null) {
+            $resourcePath = str_replace(
+                "{" . "call" . "}",
+                $this->apiClient->getSerializer()->toPathValue($call),
+                $resourcePath
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
+        } elseif (count($formParams) > 0) {
+            $httpBody = $formParams; // for HTTP post (form)
+        }
+        // make the API Call
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath,
+                'GET',
+                $queryParams,
+                $httpBody,
+                $headerParams,
+                '\Swagger\Client\Model\LogWrapper',
+                '/apps/{app}/calls/{call}/log'
+            );
+
+            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\LogWrapper', $httpHeader), $statusCode, $httpHeader];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\LogWrapper', $e->getResponseHeaders());
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Error', $e->getResponseHeaders());
+                    $e->setResponseObject($data);
+                    break;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation appsAppCallsGet
+     *
+     * Get app-bound calls.
+     *
+     * @param string $app App name. (required)
+     * @param string $route App route. (optional)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return \Swagger\Client\Model\CallsWrapper
+     */
+    public function appsAppCallsGet($app, $route = null)
+    {
+        list($response) = $this->appsAppCallsGetWithHttpInfo($app, $route);
+        return $response;
+    }
+
+    /**
+     * Operation appsAppCallsGetWithHttpInfo
+     *
+     * Get app-bound calls.
+     *
+     * @param string $app App name. (required)
+     * @param string $route App route. (optional)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return array of \Swagger\Client\Model\CallsWrapper, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function appsAppCallsGetWithHttpInfo($app, $route = null)
+    {
+        // verify the required parameter 'app' is set
+        if ($app === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $app when calling appsAppCallsGet');
+        }
+        // parse inputs
+        $resourcePath = "/apps/{app}/calls";
+        $httpBody = '';
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
+        if (!is_null($_header_accept)) {
+            $headerParams['Accept'] = $_header_accept;
+        }
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
+
+        // query params
+        if ($route !== null) {
+            $queryParams['route'] = $this->apiClient->getSerializer()->toQueryValue($route);
+        }
         // path params
         if ($app !== null) {
             $resourcePath = str_replace(
@@ -238,290 +458,18 @@ class AppsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\AppWrapper',
-                '/apps/{app}'
+                '\Swagger\Client\Model\CallsWrapper',
+                '/apps/{app}/calls'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\AppWrapper', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\CallsWrapper', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\AppWrapper', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\CallsWrapper', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 404:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Error', $e->getResponseHeaders());
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Error', $e->getResponseHeaders());
-                    $e->setResponseObject($data);
-                    break;
-            }
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation appsAppPatch
-     *
-     * Updates an app.
-     *
-     * @param string $app name of the app. (required)
-     * @param \Swagger\Client\Model\AppWrapper $body App to post. (required)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return \Swagger\Client\Model\AppWrapper
-     */
-    public function appsAppPatch($app, $body)
-    {
-        list($response) = $this->appsAppPatchWithHttpInfo($app, $body);
-        return $response;
-    }
-
-    /**
-     * Operation appsAppPatchWithHttpInfo
-     *
-     * Updates an app.
-     *
-     * @param string $app name of the app. (required)
-     * @param \Swagger\Client\Model\AppWrapper $body App to post. (required)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return array of \Swagger\Client\Model\AppWrapper, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function appsAppPatchWithHttpInfo($app, $body)
-    {
-        // verify the required parameter 'app' is set
-        if ($app === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $app when calling appsAppPatch');
-        }
-        // verify the required parameter 'body' is set
-        if ($body === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $body when calling appsAppPatch');
-        }
-        // parse inputs
-        $resourcePath = "/apps/{app}";
-        $httpBody = '';
-        $queryParams = [];
-        $headerParams = [];
-        $formParams = [];
-        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
-        if (!is_null($_header_accept)) {
-            $headerParams['Accept'] = $_header_accept;
-        }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
-
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                "{" . "app" . "}",
-                $this->apiClient->getSerializer()->toPathValue($app),
-                $resourcePath
-            );
-        }
-        // body params
-        $_tempBody = null;
-        if (isset($body)) {
-            $_tempBody = $body;
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } elseif (count($formParams) > 0) {
-            $httpBody = $formParams; // for HTTP post (form)
-        }
-        // make the API Call
-        try {
-            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath,
-                'PATCH',
-                $queryParams,
-                $httpBody,
-                $headerParams,
-                '\Swagger\Client\Model\AppWrapper',
-                '/apps/{app}'
-            );
-
-            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\AppWrapper', $httpHeader), $statusCode, $httpHeader];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\AppWrapper', $e->getResponseHeaders());
-                    $e->setResponseObject($data);
-                    break;
-                case 400:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Error', $e->getResponseHeaders());
-                    $e->setResponseObject($data);
-                    break;
-                case 404:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Error', $e->getResponseHeaders());
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Error', $e->getResponseHeaders());
-                    $e->setResponseObject($data);
-                    break;
-            }
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation appsGet
-     *
-     * Get all app names.
-     *
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return \Swagger\Client\Model\AppsWrapper
-     */
-    public function appsGet()
-    {
-        list($response) = $this->appsGetWithHttpInfo();
-        return $response;
-    }
-
-    /**
-     * Operation appsGetWithHttpInfo
-     *
-     * Get all app names.
-     *
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return array of \Swagger\Client\Model\AppsWrapper, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function appsGetWithHttpInfo()
-    {
-        // parse inputs
-        $resourcePath = "/apps";
-        $httpBody = '';
-        $queryParams = [];
-        $headerParams = [];
-        $formParams = [];
-        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
-        if (!is_null($_header_accept)) {
-            $headerParams['Accept'] = $_header_accept;
-        }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
-
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } elseif (count($formParams) > 0) {
-            $httpBody = $formParams; // for HTTP post (form)
-        }
-        // make the API Call
-        try {
-            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath,
-                'GET',
-                $queryParams,
-                $httpBody,
-                $headerParams,
-                '\Swagger\Client\Model\AppsWrapper',
-                '/apps'
-            );
-
-            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\AppsWrapper', $httpHeader), $statusCode, $httpHeader];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\AppsWrapper', $e->getResponseHeaders());
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Error', $e->getResponseHeaders());
-                    $e->setResponseObject($data);
-                    break;
-            }
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation appsPost
-     *
-     * Post new app
-     *
-     * @param \Swagger\Client\Model\AppWrapper $body App to post. (required)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return \Swagger\Client\Model\AppWrapper
-     */
-    public function appsPost($body)
-    {
-        list($response) = $this->appsPostWithHttpInfo($body);
-        return $response;
-    }
-
-    /**
-     * Operation appsPostWithHttpInfo
-     *
-     * Post new app
-     *
-     * @param \Swagger\Client\Model\AppWrapper $body App to post. (required)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return array of \Swagger\Client\Model\AppWrapper, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function appsPostWithHttpInfo($body)
-    {
-        // verify the required parameter 'body' is set
-        if ($body === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $body when calling appsPost');
-        }
-        // parse inputs
-        $resourcePath = "/apps";
-        $httpBody = '';
-        $queryParams = [];
-        $headerParams = [];
-        $formParams = [];
-        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
-        if (!is_null($_header_accept)) {
-            $headerParams['Accept'] = $_header_accept;
-        }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
-
-        // body params
-        $_tempBody = null;
-        if (isset($body)) {
-            $_tempBody = $body;
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } elseif (count($formParams) > 0) {
-            $httpBody = $formParams; // for HTTP post (form)
-        }
-        // make the API Call
-        try {
-            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath,
-                'POST',
-                $queryParams,
-                $httpBody,
-                $headerParams,
-                '\Swagger\Client\Model\AppWrapper',
-                '/apps'
-            );
-
-            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\AppWrapper', $httpHeader), $statusCode, $httpHeader];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\AppWrapper', $e->getResponseHeaders());
-                    $e->setResponseObject($data);
-                    break;
-                case 400:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Error', $e->getResponseHeaders());
-                    $e->setResponseObject($data);
-                    break;
-                case 409:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Error', $e->getResponseHeaders());
-                    $e->setResponseObject($data);
-                    break;
-                default:
                     $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Error', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;

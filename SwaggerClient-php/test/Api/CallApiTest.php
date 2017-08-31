@@ -1,6 +1,6 @@
 <?php
 /**
- * AppsApiTest
+ * CallApiTest
  * PHP version 5
  *
  * @category Class
@@ -34,14 +34,14 @@ use \Swagger\Client\ApiException;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * AppsApiTest Class Doc Comment
+ * CallApiTest Class Doc Comment
  *
  * @category Class
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class AppsApiTest extends \PHPUnit_Framework_TestCase
+class CallApiTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -73,52 +73,42 @@ class AppsApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test case for appsAppDelete
+     * Test case for appsAppCallsCallGet
      *
-     * Delete an app..
+     * Get call information.
      *
      */
-    public function testAppsAppDelete()
+    public function testAppsAppCallsCallGet()
     {
     }
 
     /**
-     * Test case for appsAppGet
+     * Test case for appsAppCallsCallLogDelete
      *
-     * Get information for a app..
+     * Delete call log entry.
      *
      */
-    public function testAppsAppGet()
+    public function testAppsAppCallsCallLogDelete()
     {
     }
 
     /**
-     * Test case for appsAppPatch
+     * Test case for appsAppCallsCallLogGet
      *
-     * Updates an app..
+     * Get call logs.
      *
      */
-    public function testAppsAppPatch()
+    public function testAppsAppCallsCallLogGet()
     {
     }
 
     /**
-     * Test case for appsGet
+     * Test case for appsAppCallsGet
      *
-     * Get all app names..
-     *
-     */
-    public function testAppsGet()
-    {
-    }
-
-    /**
-     * Test case for appsPost
-     *
-     * Post new app.
+     * Get app-bound calls..
      *
      */
-    public function testAppsPost()
+    public function testAppsAppCallsGet()
     {
     }
 }

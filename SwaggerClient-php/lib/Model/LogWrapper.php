@@ -1,6 +1,6 @@
 <?php
 /**
- * AppWrapper
+ * LogWrapper
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ namespace Swagger\Client\Model;
 use \ArrayAccess;
 
 /**
- * AppWrapper Class Doc Comment
+ * LogWrapper Class Doc Comment
  *
  * @category    Class
  * @package     Swagger\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class AppWrapper implements ArrayAccess
+class LogWrapper implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,15 +47,14 @@ class AppWrapper implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'AppWrapper';
+    protected static $swaggerModelName = 'LogWrapper';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'app' => '\Swagger\Client\Model\App',
-        'error' => '\Swagger\Client\Model\ErrorBody'
+        'log' => '\Swagger\Client\Model\Log'
     ];
 
     /**
@@ -63,8 +62,7 @@ class AppWrapper implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'app' => null,
-        'error' => null
+        'log' => null
     ];
 
     public static function swaggerTypes()
@@ -82,8 +80,7 @@ class AppWrapper implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'app' => 'app',
-        'error' => 'error'
+        'log' => 'log'
     ];
 
 
@@ -92,8 +89,7 @@ class AppWrapper implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'app' => 'setApp',
-        'error' => 'setError'
+        'log' => 'setLog'
     ];
 
 
@@ -102,8 +98,7 @@ class AppWrapper implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'app' => 'getApp',
-        'error' => 'getError'
+        'log' => 'getLog'
     ];
 
     public static function attributeMap()
@@ -137,8 +132,7 @@ class AppWrapper implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['app'] = isset($data['app']) ? $data['app'] : null;
-        $this->container['error'] = isset($data['error']) ? $data['error'] : null;
+        $this->container['log'] = isset($data['log']) ? $data['log'] : null;
     }
 
     /**
@@ -150,8 +144,8 @@ class AppWrapper implements ArrayAccess
     {
         $invalid_properties = [];
 
-        if ($this->container['app'] === null) {
-            $invalid_properties[] = "'app' can't be null";
+        if ($this->container['log'] === null) {
+            $invalid_properties[] = "'log' can't be null";
         }
         return $invalid_properties;
     }
@@ -165,7 +159,7 @@ class AppWrapper implements ArrayAccess
     public function valid()
     {
 
-        if ($this->container['app'] === null) {
+        if ($this->container['log'] === null) {
             return false;
         }
         return true;
@@ -173,43 +167,22 @@ class AppWrapper implements ArrayAccess
 
 
     /**
-     * Gets app
-     * @return \Swagger\Client\Model\App
+     * Gets log
+     * @return \Swagger\Client\Model\Log
      */
-    public function getApp()
+    public function getLog()
     {
-        return $this->container['app'];
+        return $this->container['log'];
     }
 
     /**
-     * Sets app
-     * @param \Swagger\Client\Model\App $app
+     * Sets log
+     * @param \Swagger\Client\Model\Log $log Call log entry.
      * @return $this
      */
-    public function setApp($app)
+    public function setLog($log)
     {
-        $this->container['app'] = $app;
-
-        return $this;
-    }
-
-    /**
-     * Gets error
-     * @return \Swagger\Client\Model\ErrorBody
-     */
-    public function getError()
-    {
-        return $this->container['error'];
-    }
-
-    /**
-     * Sets error
-     * @param \Swagger\Client\Model\ErrorBody $error
-     * @return $this
-     */
-    public function setError($error)
-    {
-        $this->container['error'] = $error;
+        $this->container['log'] = $log;
 
         return $this;
     }

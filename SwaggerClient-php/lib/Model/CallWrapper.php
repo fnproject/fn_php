@@ -1,6 +1,6 @@
 <?php
 /**
- * AppWrapper
+ * CallWrapper
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ namespace Swagger\Client\Model;
 use \ArrayAccess;
 
 /**
- * AppWrapper Class Doc Comment
+ * CallWrapper Class Doc Comment
  *
  * @category    Class
  * @package     Swagger\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class AppWrapper implements ArrayAccess
+class CallWrapper implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,15 +47,14 @@ class AppWrapper implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'AppWrapper';
+    protected static $swaggerModelName = 'CallWrapper';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'app' => '\Swagger\Client\Model\App',
-        'error' => '\Swagger\Client\Model\ErrorBody'
+        'call' => '\Swagger\Client\Model\Call'
     ];
 
     /**
@@ -63,8 +62,7 @@ class AppWrapper implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'app' => null,
-        'error' => null
+        'call' => null
     ];
 
     public static function swaggerTypes()
@@ -82,8 +80,7 @@ class AppWrapper implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'app' => 'app',
-        'error' => 'error'
+        'call' => 'call'
     ];
 
 
@@ -92,8 +89,7 @@ class AppWrapper implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'app' => 'setApp',
-        'error' => 'setError'
+        'call' => 'setCall'
     ];
 
 
@@ -102,8 +98,7 @@ class AppWrapper implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'app' => 'getApp',
-        'error' => 'getError'
+        'call' => 'getCall'
     ];
 
     public static function attributeMap()
@@ -137,8 +132,7 @@ class AppWrapper implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['app'] = isset($data['app']) ? $data['app'] : null;
-        $this->container['error'] = isset($data['error']) ? $data['error'] : null;
+        $this->container['call'] = isset($data['call']) ? $data['call'] : null;
     }
 
     /**
@@ -150,8 +144,8 @@ class AppWrapper implements ArrayAccess
     {
         $invalid_properties = [];
 
-        if ($this->container['app'] === null) {
-            $invalid_properties[] = "'app' can't be null";
+        if ($this->container['call'] === null) {
+            $invalid_properties[] = "'call' can't be null";
         }
         return $invalid_properties;
     }
@@ -165,7 +159,7 @@ class AppWrapper implements ArrayAccess
     public function valid()
     {
 
-        if ($this->container['app'] === null) {
+        if ($this->container['call'] === null) {
             return false;
         }
         return true;
@@ -173,43 +167,22 @@ class AppWrapper implements ArrayAccess
 
 
     /**
-     * Gets app
-     * @return \Swagger\Client\Model\App
+     * Gets call
+     * @return \Swagger\Client\Model\Call
      */
-    public function getApp()
+    public function getCall()
     {
-        return $this->container['app'];
+        return $this->container['call'];
     }
 
     /**
-     * Sets app
-     * @param \Swagger\Client\Model\App $app
+     * Sets call
+     * @param \Swagger\Client\Model\Call $call Call object.
      * @return $this
      */
-    public function setApp($app)
+    public function setCall($call)
     {
-        $this->container['app'] = $app;
-
-        return $this;
-    }
-
-    /**
-     * Gets error
-     * @return \Swagger\Client\Model\ErrorBody
-     */
-    public function getError()
-    {
-        return $this->container['error'];
-    }
-
-    /**
-     * Sets error
-     * @param \Swagger\Client\Model\ErrorBody $error
-     * @return $this
-     */
-    public function setError($error)
-    {
-        $this->container['error'] = $error;
+        $this->container['call'] = $call;
 
         return $this;
     }

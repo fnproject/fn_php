@@ -1,6 +1,6 @@
 <?php
 /**
- * ErrorTest
+ * LogWrapperTest
  *
  * PHP version 5
  *
@@ -30,16 +30,16 @@
 namespace Swagger\Client;
 
 /**
- * ErrorTest Class Doc Comment
+ * LogWrapperTest Class Doc Comment
  *
  * @category    Class */
-// * @description Error
+// * @description LogWrapper
 /**
  * @package     Swagger\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class ErrorTest extends \PHPUnit_Framework_TestCase
+class LogWrapperTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -71,16 +71,16 @@ class ErrorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "Error"
+     * Test "LogWrapper"
      */
-    public function testError()
+    public function testLogWrapper()
     {
     }
 
     /**
-     * Test attribute "error"
+     * Test attribute "log"
      */
-    public function testPropertyError()
+    public function testPropertyLog()
     {
     }
 }

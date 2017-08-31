@@ -1,6 +1,6 @@
 <?php
 /**
- * ErrorBody
+ * Call
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ namespace Swagger\Client\Model;
 use \ArrayAccess;
 
 /**
- * ErrorBody Class Doc Comment
+ * Call Class Doc Comment
  *
  * @category    Class
  * @package     Swagger\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class ErrorBody implements ArrayAccess
+class Call implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,15 +47,20 @@ class ErrorBody implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'ErrorBody';
+    protected static $swaggerModelName = 'Call';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'message' => 'string',
-        'fields' => 'string'
+        'id' => 'string',
+        'status' => 'string',
+        'app_name' => 'string',
+        'path' => 'string',
+        'created_at' => '\DateTime',
+        'started_at' => '\DateTime',
+        'completed_at' => '\DateTime'
     ];
 
     /**
@@ -63,8 +68,13 @@ class ErrorBody implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'message' => null,
-        'fields' => null
+        'id' => null,
+        'status' => null,
+        'app_name' => null,
+        'path' => null,
+        'created_at' => 'date-time',
+        'started_at' => 'date-time',
+        'completed_at' => 'date-time'
     ];
 
     public static function swaggerTypes()
@@ -82,8 +92,13 @@ class ErrorBody implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'message' => 'message',
-        'fields' => 'fields'
+        'id' => 'id',
+        'status' => 'status',
+        'app_name' => 'app_name',
+        'path' => 'path',
+        'created_at' => 'created_at',
+        'started_at' => 'started_at',
+        'completed_at' => 'completed_at'
     ];
 
 
@@ -92,8 +107,13 @@ class ErrorBody implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'message' => 'setMessage',
-        'fields' => 'setFields'
+        'id' => 'setId',
+        'status' => 'setStatus',
+        'app_name' => 'setAppName',
+        'path' => 'setPath',
+        'created_at' => 'setCreatedAt',
+        'started_at' => 'setStartedAt',
+        'completed_at' => 'setCompletedAt'
     ];
 
 
@@ -102,8 +122,13 @@ class ErrorBody implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'message' => 'getMessage',
-        'fields' => 'getFields'
+        'id' => 'getId',
+        'status' => 'getStatus',
+        'app_name' => 'getAppName',
+        'path' => 'getPath',
+        'created_at' => 'getCreatedAt',
+        'started_at' => 'getStartedAt',
+        'completed_at' => 'getCompletedAt'
     ];
 
     public static function attributeMap()
@@ -137,8 +162,13 @@ class ErrorBody implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
-        $this->container['fields'] = isset($data['fields']) ? $data['fields'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        $this->container['app_name'] = isset($data['app_name']) ? $data['app_name'] : null;
+        $this->container['path'] = isset($data['path']) ? $data['path'] : null;
+        $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
+        $this->container['started_at'] = isset($data['started_at']) ? $data['started_at'] : null;
+        $this->container['completed_at'] = isset($data['completed_at']) ? $data['completed_at'] : null;
     }
 
     /**
@@ -167,43 +197,148 @@ class ErrorBody implements ArrayAccess
 
 
     /**
-     * Gets message
+     * Gets id
      * @return string
      */
-    public function getMessage()
+    public function getId()
     {
-        return $this->container['message'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets message
-     * @param string $message
+     * Sets id
+     * @param string $id Call UUID ID.
      * @return $this
      */
-    public function setMessage($message)
+    public function setId($id)
     {
-        $this->container['message'] = $message;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets fields
+     * Gets status
      * @return string
      */
-    public function getFields()
+    public function getStatus()
     {
-        return $this->container['fields'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets fields
-     * @param string $fields
+     * Sets status
+     * @param string $status Call execution status.
      * @return $this
      */
-    public function setFields($fields)
+    public function setStatus($status)
     {
-        $this->container['fields'] = $fields;
+        $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets app_name
+     * @return string
+     */
+    public function getAppName()
+    {
+        return $this->container['app_name'];
+    }
+
+    /**
+     * Sets app_name
+     * @param string $app_name App name that is assigned to a route that is being executed.
+     * @return $this
+     */
+    public function setAppName($app_name)
+    {
+        $this->container['app_name'] = $app_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets path
+     * @return string
+     */
+    public function getPath()
+    {
+        return $this->container['path'];
+    }
+
+    /**
+     * Sets path
+     * @param string $path App route that is being executed.
+     * @return $this
+     */
+    public function setPath($path)
+    {
+        $this->container['path'] = $path;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     * @param \DateTime $created_at Time when call was submitted. Always in UTC.
+     * @return $this
+     */
+    public function setCreatedAt($created_at)
+    {
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets started_at
+     * @return \DateTime
+     */
+    public function getStartedAt()
+    {
+        return $this->container['started_at'];
+    }
+
+    /**
+     * Sets started_at
+     * @param \DateTime $started_at Time when call started execution. Always in UTC.
+     * @return $this
+     */
+    public function setStartedAt($started_at)
+    {
+        $this->container['started_at'] = $started_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets completed_at
+     * @return \DateTime
+     */
+    public function getCompletedAt()
+    {
+        return $this->container['completed_at'];
+    }
+
+    /**
+     * Sets completed_at
+     * @param \DateTime $completed_at Time when call completed, whether it was successul or failed. Always in UTC.
+     * @return $this
+     */
+    public function setCompletedAt($completed_at)
+    {
+        $this->container['completed_at'] = $completed_at;
 
         return $this;
     }

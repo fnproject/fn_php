@@ -1,6 +1,6 @@
 <?php
 /**
- * ErrorTest
+ * CallWrapperTest
  *
  * PHP version 5
  *
@@ -30,16 +30,16 @@
 namespace Swagger\Client;
 
 /**
- * ErrorTest Class Doc Comment
+ * CallWrapperTest Class Doc Comment
  *
  * @category    Class */
-// * @description Error
+// * @description CallWrapper
 /**
  * @package     Swagger\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class ErrorTest extends \PHPUnit_Framework_TestCase
+class CallWrapperTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -71,16 +71,16 @@ class ErrorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "Error"
+     * Test "CallWrapper"
      */
-    public function testError()
+    public function testCallWrapper()
     {
     }
 
     /**
-     * Test attribute "error"
+     * Test attribute "call"
      */
-    public function testPropertyError()
+    public function testPropertyCall()
     {
     }
 }

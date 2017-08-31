@@ -9,10 +9,9 @@ Name | Type | Description | Notes
 **memory** | **int** | Max usable memory for this route (MiB). | [optional] 
 **type** | **string** | Route type | [optional] 
 **format** | **string** | Payload format sent into function. | [optional] 
-**max_concurrency** | **int** | Maximum number of hot functions concurrency | [optional] 
 **config** | **map[string,string]** | Route configuration - overrides application configuration | [optional] 
-**timeout** | **int** | Timeout for executions of this route. Value in Seconds | [optional] 
-**idle_timeout** | **int** | Hot functions idle timeout before termination. Value in Seconds | [optional] 
+**timeout** | **int** | Timeout for executions of this route. Value in Seconds | [optional] [default to 30]
+**idle_timeout** | **int** | Hot functions idle timeout before termination. Value in Seconds | [optional] [default to 30]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

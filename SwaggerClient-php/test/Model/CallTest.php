@@ -1,6 +1,6 @@
 <?php
 /**
- * ErrorTest
+ * CallTest
  *
  * PHP version 5
  *
@@ -30,16 +30,16 @@
 namespace Swagger\Client;
 
 /**
- * ErrorTest Class Doc Comment
+ * CallTest Class Doc Comment
  *
  * @category    Class */
-// * @description Error
+// * @description Call
 /**
  * @package     Swagger\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class ErrorTest extends \PHPUnit_Framework_TestCase
+class CallTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -71,16 +71,58 @@ class ErrorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "Error"
+     * Test "Call"
      */
-    public function testError()
+    public function testCall()
     {
     }
 
     /**
-     * Test attribute "error"
+     * Test attribute "id"
      */
-    public function testPropertyError()
+    public function testPropertyId()
+    {
+    }
+
+    /**
+     * Test attribute "status"
+     */
+    public function testPropertyStatus()
+    {
+    }
+
+    /**
+     * Test attribute "app_name"
+     */
+    public function testPropertyAppName()
+    {
+    }
+
+    /**
+     * Test attribute "path"
+     */
+    public function testPropertyPath()
+    {
+    }
+
+    /**
+     * Test attribute "created_at"
+     */
+    public function testPropertyCreatedAt()
+    {
+    }
+
+    /**
+     * Test attribute "started_at"
+     */
+    public function testPropertyStartedAt()
+    {
+    }
+
+    /**
+     * Test attribute "completed_at"
+     */
+    public function testPropertyCompletedAt()
     {
     }
 }

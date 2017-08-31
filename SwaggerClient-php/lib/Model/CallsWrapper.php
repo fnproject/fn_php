@@ -1,6 +1,6 @@
 <?php
 /**
- * AppWrapper
+ * CallsWrapper
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ namespace Swagger\Client\Model;
 use \ArrayAccess;
 
 /**
- * AppWrapper Class Doc Comment
+ * CallsWrapper Class Doc Comment
  *
  * @category    Class
  * @package     Swagger\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class AppWrapper implements ArrayAccess
+class CallsWrapper implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,14 +47,14 @@ class AppWrapper implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'AppWrapper';
+    protected static $swaggerModelName = 'CallsWrapper';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'app' => '\Swagger\Client\Model\App',
+        'calls' => '\Swagger\Client\Model\Call[]',
         'error' => '\Swagger\Client\Model\ErrorBody'
     ];
 
@@ -63,7 +63,7 @@ class AppWrapper implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'app' => null,
+        'calls' => null,
         'error' => null
     ];
 
@@ -82,7 +82,7 @@ class AppWrapper implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'app' => 'app',
+        'calls' => 'calls',
         'error' => 'error'
     ];
 
@@ -92,7 +92,7 @@ class AppWrapper implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'app' => 'setApp',
+        'calls' => 'setCalls',
         'error' => 'setError'
     ];
 
@@ -102,7 +102,7 @@ class AppWrapper implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'app' => 'getApp',
+        'calls' => 'getCalls',
         'error' => 'getError'
     ];
 
@@ -137,7 +137,7 @@ class AppWrapper implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['app'] = isset($data['app']) ? $data['app'] : null;
+        $this->container['calls'] = isset($data['calls']) ? $data['calls'] : null;
         $this->container['error'] = isset($data['error']) ? $data['error'] : null;
     }
 
@@ -150,8 +150,8 @@ class AppWrapper implements ArrayAccess
     {
         $invalid_properties = [];
 
-        if ($this->container['app'] === null) {
-            $invalid_properties[] = "'app' can't be null";
+        if ($this->container['calls'] === null) {
+            $invalid_properties[] = "'calls' can't be null";
         }
         return $invalid_properties;
     }
@@ -165,7 +165,7 @@ class AppWrapper implements ArrayAccess
     public function valid()
     {
 
-        if ($this->container['app'] === null) {
+        if ($this->container['calls'] === null) {
             return false;
         }
         return true;
@@ -173,22 +173,22 @@ class AppWrapper implements ArrayAccess
 
 
     /**
-     * Gets app
-     * @return \Swagger\Client\Model\App
+     * Gets calls
+     * @return \Swagger\Client\Model\Call[]
      */
-    public function getApp()
+    public function getCalls()
     {
-        return $this->container['app'];
+        return $this->container['calls'];
     }
 
     /**
-     * Sets app
-     * @param \Swagger\Client\Model\App $app
+     * Sets calls
+     * @param \Swagger\Client\Model\Call[] $calls
      * @return $this
      */
-    public function setApp($app)
+    public function setCalls($calls)
     {
-        $this->container['app'] = $app;
+        $this->container['calls'] = $calls;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * AppWrapper
+ * Log
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ namespace Swagger\Client\Model;
 use \ArrayAccess;
 
 /**
- * AppWrapper Class Doc Comment
+ * Log Class Doc Comment
  *
  * @category    Class
  * @package     Swagger\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class AppWrapper implements ArrayAccess
+class Log implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,15 +47,15 @@ class AppWrapper implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'AppWrapper';
+    protected static $swaggerModelName = 'Log';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'app' => '\Swagger\Client\Model\App',
-        'error' => '\Swagger\Client\Model\ErrorBody'
+        'call_id' => 'string',
+        'log' => 'string'
     ];
 
     /**
@@ -63,8 +63,8 @@ class AppWrapper implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'app' => null,
-        'error' => null
+        'call_id' => null,
+        'log' => null
     ];
 
     public static function swaggerTypes()
@@ -82,8 +82,8 @@ class AppWrapper implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'app' => 'app',
-        'error' => 'error'
+        'call_id' => 'call_id',
+        'log' => 'log'
     ];
 
 
@@ -92,8 +92,8 @@ class AppWrapper implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'app' => 'setApp',
-        'error' => 'setError'
+        'call_id' => 'setCallId',
+        'log' => 'setLog'
     ];
 
 
@@ -102,8 +102,8 @@ class AppWrapper implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'app' => 'getApp',
-        'error' => 'getError'
+        'call_id' => 'getCallId',
+        'log' => 'getLog'
     ];
 
     public static function attributeMap()
@@ -137,8 +137,8 @@ class AppWrapper implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['app'] = isset($data['app']) ? $data['app'] : null;
-        $this->container['error'] = isset($data['error']) ? $data['error'] : null;
+        $this->container['call_id'] = isset($data['call_id']) ? $data['call_id'] : null;
+        $this->container['log'] = isset($data['log']) ? $data['log'] : null;
     }
 
     /**
@@ -150,9 +150,6 @@ class AppWrapper implements ArrayAccess
     {
         $invalid_properties = [];
 
-        if ($this->container['app'] === null) {
-            $invalid_properties[] = "'app' can't be null";
-        }
         return $invalid_properties;
     }
 
@@ -165,51 +162,48 @@ class AppWrapper implements ArrayAccess
     public function valid()
     {
 
-        if ($this->container['app'] === null) {
-            return false;
-        }
         return true;
     }
 
 
     /**
-     * Gets app
-     * @return \Swagger\Client\Model\App
+     * Gets call_id
+     * @return string
      */
-    public function getApp()
+    public function getCallId()
     {
-        return $this->container['app'];
+        return $this->container['call_id'];
     }
 
     /**
-     * Sets app
-     * @param \Swagger\Client\Model\App $app
+     * Sets call_id
+     * @param string $call_id Call UUID ID
      * @return $this
      */
-    public function setApp($app)
+    public function setCallId($call_id)
     {
-        $this->container['app'] = $app;
+        $this->container['call_id'] = $call_id;
 
         return $this;
     }
 
     /**
-     * Gets error
-     * @return \Swagger\Client\Model\ErrorBody
+     * Gets log
+     * @return string
      */
-    public function getError()
+    public function getLog()
     {
-        return $this->container['error'];
+        return $this->container['log'];
     }
 
     /**
-     * Sets error
-     * @param \Swagger\Client\Model\ErrorBody $error
+     * Sets log
+     * @param string $log
      * @return $this
      */
-    public function setError($error)
+    public function setLog($log)
     {
-        $this->container['error'] = $error;
+        $this->container['log'] = $log;
 
         return $this;
     }
