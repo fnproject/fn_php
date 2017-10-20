@@ -13,11 +13,11 @@ Method | HTTP request | Description
 
 
 # **appsAppRoutesGet**
-> \Swagger\Client\Model\RoutesWrapper appsAppRoutesGet($app)
+> \Swagger\Client\Model\RoutesWrapper appsAppRoutesGet($app, $image, $cursor, $per_page)
 
 Get route list by app name.
 
-This will list routes for a particular app.
+This will list routes for a particular app, returned in alphabetical order.
 
 ### Example
 ```php
@@ -26,9 +26,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 $api_instance = new Swagger\Client\Api\RoutesApi();
 $app = "app_example"; // string | Name of app for this set of routes.
+$image = "image_example"; // string | Route image to match, exact.
+$cursor = "cursor_example"; // string | Cursor from previous response.next_cursor to begin results after, if any.
+$per_page = 56; // int | Number of results to return, defaults to 30. Max of 100.
 
 try {
-    $result = $api_instance->appsAppRoutesGet($app);
+    $result = $api_instance->appsAppRoutesGet($app, $image, $cursor, $per_page);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling RoutesApi->appsAppRoutesGet: ', $e->getMessage(), PHP_EOL;
@@ -41,6 +44,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **app** | **string**| Name of app for this set of routes. |
+ **image** | **string**| Route image to match, exact. | [optional]
+ **cursor** | **string**| Cursor from previous response.next_cursor to begin results after, if any. | [optional]
+ **per_page** | **int**| Number of results to return, defaults to 30. Max of 100. | [optional]
 
 ### Return type
 

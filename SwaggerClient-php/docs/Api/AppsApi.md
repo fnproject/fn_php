@@ -148,11 +148,11 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **appsGet**
-> \Swagger\Client\Model\AppsWrapper appsGet()
+> \Swagger\Client\Model\AppsWrapper appsGet($cursor, $per_page)
 
 Get all app names.
 
-Get a list of all the apps in the system.
+Get a list of all the apps in the system, returned in alphabetical order.
 
 ### Example
 ```php
@@ -160,9 +160,11 @@ Get a list of all the apps in the system.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 $api_instance = new Swagger\Client\Api\AppsApi();
+$cursor = "cursor_example"; // string | Cursor from previous response.next_cursor to begin results after, if any.
+$per_page = 56; // int | Number of results to return, defaults to 30. Max of 100.
 
 try {
-    $result = $api_instance->appsGet();
+    $result = $api_instance->appsGet($cursor, $per_page);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AppsApi->appsGet: ', $e->getMessage(), PHP_EOL;
@@ -171,7 +173,11 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cursor** | **string**| Cursor from previous response.next_cursor to begin results after, if any. | [optional]
+ **per_page** | **int**| Number of results to return, defaults to 30. Max of 100. | [optional]
 
 ### Return type
 
